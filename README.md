@@ -1,2 +1,0 @@
-# Events
-Created with CodeSandbox
