@@ -37,9 +37,6 @@ constructor(props) {
 }
 
 onDismiss(Id) {
-  // const isNotId = item => item.objectId !==Id;
-  // const updatedList = this.state.list.filter(isNotId);
-  
   const updatedList = this.state.list.filter(item => item.objectId !== Id);
   this.setState({ list:updatedList });
 }
@@ -49,17 +46,18 @@ onSearchChange(event){
  }
 
   render(){
+    const { list, searchTerm} = this.state;
     return (
       <div className="App">
       <form>
         <input 
-        value={this.state.searchTerm}
+        value={searchTerm}
         type="text"
         onChange={this.onSearchChange}
          />
       </form>
 
-        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
+        {list.filter(isSearched(searchTerm)).map(item => {
           const onHandleDismiss = () => this.onDismiss(item.objectId);
             return (
             <div key={item.objectId}>
